@@ -9,7 +9,7 @@ conda activate tmux
 tmux new -s download
 
 # start the data pull command
-rsync -rvh --progress smaug:~/camel_flye.bash ~/smaugtest.bash
+rsync -rvh --progress smaug:/data/test_data/simon_RNA/bams_from_hpc /gpfs01/home/mbzlld/data/splice_variant_search/Simons_data/
 
 # cntrl+d to detatch from the tmux window while the command is running
 
