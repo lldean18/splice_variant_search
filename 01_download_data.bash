@@ -11,7 +11,7 @@ tmux new -s download
 # start the data pull command
 rsync -rvh --progress smaug:/data/test_data/simon_RNA/bams_from_hpc /gpfs01/home/mbzlld/data/splice_variant_search/Simons_data/
 
-# cntrl+d to detatch from the tmux window while the command is running
+# cntrl+b, then d to detatch from the tmux window while the command is running
 
 # once download is complete
 exit
