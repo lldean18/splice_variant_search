@@ -27,16 +27,22 @@ cd $wkdir
 
 # activate software
 source $HOME/.bash_profile
+
+## first index the bam file with samtools
+#conda activate samtools1.22
+#samtools index --threads 8 -M $bam
+#conda deactivate
+
 #conda create --name flair bioconda::flair -y
 conda activate flair
 
 
 # convert bam to bed12 format
-bam2Bed12 -i $bam
+bam2Bed12 -i $bam > ${bam%.*}.bed
 
 # flair correct - corrects misaligned splice sites using genome annotations
 flair correct \
-	--query ${bam%.*}.bed12 \
+	--query ${bam%.*}.bed \
 	--gtf $annotation \
 	--genome $reference \
 	--threads 8
@@ -45,7 +51,7 @@ flair correct \
 flair collapse \
 	--genome $reference \
 	--gtf $annotation \
-	--query ${bam%.*}.bed12 \
+	--query ${bam%.*}.bed \
 	--reads $fastqs $fastqs2 \
 	--generate_map \
 	--check_splice \
