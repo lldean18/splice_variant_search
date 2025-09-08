@@ -46,30 +46,28 @@ conda activate flair
 #	--threads 8 \
 #	--reads $fastqs $fastqs2
 
-# flair correct - corrects misaligned splice sites using genome annotations
-flair correct \
-	--query flair.aligned.bed \
-	--gtf $annotation \
-	--genome $reference \
-	--threads 8
+## flair correct - corrects misaligned splice sites using genome annotations
+#flair correct \
+#	--query flair.aligned.bed \
+#	--gtf $annotation \
+#	--genome $reference \
+#	--threads 8
 
-# flair collapse - Defines high-confidence isoforms from corrected reads
+## flair collapse - Defines high-confidence isoforms from corrected reads
 #flair collapse \
 #	--genome $reference \
 #	--gtf $annotation \
-#	--query ${bam%.*}.bed \
+#	--query flair_all_corrected.bed \
 #	--reads $fastqs $fastqs2 \
 #	--generate_map \
 #	--check_splice \
 #	--stringent \
 #	--annotation_reliant generate
 
-# WILL CARRY ON FROM HERE IN A SEPARATE RUN IF THE FIRST BIT WORKS!!
-
 # flair quantify - 
-#flair quantify \
-#	--isoforms ? \
-#	--reads_manifest ?
+flair quantify \
+	--isoforms flair.collapse.isoforms.fa \
+	--reads_manifest 
 
 # flair diffsplice - 
 
