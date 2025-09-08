@@ -21,6 +21,7 @@ annotation=$wkdir/GCF_000001405.40_GRCh38.p14_genomic.gtf
 #bam=$wkdir/bams_from_hpc/SF188_DMSO_merged.bam
 fastqs=$wkdir/ds1239_SF188_DMSO_RNA/20241107_1347_P2S-01121-B_PBA03961_2b1a6105/fastq_pass/*
 fastqs2=/gpfs01/home/mbzlld/data/splice_variant_search/ds1239_SF188_DMSO_RNA/20241110_1301_P2S-01121-B_PBA03961_ac423a17/fastq_pass/*
+manifest=/gpfs01/home/mbzlld/data/splice_variant_search/manifest.txt
 
 cd $wkdir
 
