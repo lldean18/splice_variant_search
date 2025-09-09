@@ -68,7 +68,8 @@ conda activate flair
 # flair quantify - 
 flair quantify \
 	--isoforms flair.collapse.isoforms.fa \
-	--reads_manifest 
+	--reads_manifest $manifest \
+
 
 # flair diffsplice - 
 
