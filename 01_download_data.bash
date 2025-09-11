@@ -1,5 +1,6 @@
 #!/bin/bash
-
+# code to download the bams from Smaug to Ada
+# needed the fastq files in the end for flair rather than the bams
 
 # create a tmux session
 source $HOME/.bash_profile
