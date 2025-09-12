@@ -3,6 +3,9 @@
 # 11/7/25
 # script written for running on the UoN HPC Ada
 
+# Script to use FLAIR to detect splice variants from RNAseq data
+# input is raw fastq files, plus a reference genome and annotation file
+
 #SBATCH --job-name=flair_splice_variant_search
 #SBATCH --partition=defq
 #SBATCH --nodes=1
@@ -18,7 +21,6 @@
 wkdir=/gpfs01/home/mbzlld/data/splice_variant_search
 reference=$wkdir/GCF_000001405.40_GRCh38.p14_genomic.fna
 annotation=$wkdir/GCF_000001405.40_GRCh38.p14_genomic.gtf
-#bam=$wkdir/bams_from_hpc/SF188_DMSO_merged.bam
 fastqs=$wkdir/ds1239_SF188_DMSO_RNA/20241107_1347_P2S-01121-B_PBA03961_2b1a6105/fastq_pass/*
 fastqs2=/gpfs01/home/mbzlld/data/splice_variant_search/ds1239_SF188_DMSO_RNA/20241110_1301_P2S-01121-B_PBA03961_ac423a17/fastq_pass/*
 manifest=/gpfs01/home/mbzlld/data/splice_variant_search/manifest.tsv
@@ -29,17 +31,8 @@ cd $wkdir
 # activate software
 source $HOME/.bash_profile
 
-## first index the bam file with samtools
-#conda activate samtools1.22
-#samtools index --threads 8 -M $bam
-#conda deactivate
-
 #conda create --name flair bioconda::flair -y
 conda activate flair
-
-# not doing this now as just using the raw fastq reads directly for now
-# convert bam to bed12 format
-#bam2Bed12 -i $bam > ${bam%.*}.bed
 
 ## flair align - aligns reads to the genome using minimap2, and converts the SAM output to BED12
 #flair align \
@@ -65,14 +58,14 @@ conda activate flair
 #	--stringent \
 #	--annotation_reliant generate
 
-# flair quantify - 
+# flair quantify - Identifes the best isoform assignment 
 flair quantify \
 	--isoforms flair.collapse.isoforms.fa \
 	--reads_manifest $manifest
 
 
-# flair diffsplice - 
-
+# flair diffsplice - This would compare splice variants across two groups. Each group must have at least 3 replicates. 
+# We only have one replicate for each sample at the moment so cannot run this part.
 
 
 # deactivate software
