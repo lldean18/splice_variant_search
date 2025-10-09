@@ -58,10 +58,14 @@ conda activate flair
 #	--stringent \
 #	--annotation_reliant generate
 
-# flair quantify - Identifes the best isoform assignment 
-flair quantify \
-	--isoforms flair.collapse.isoforms.fa \
-	--reads_manifest $manifest
+## flair quantify - Identifes the best isoform assignment 
+#flair quantify \
+#	--isoforms flair.collapse.isoforms.fa \
+#	--reads_manifest $manifest
+
+# sum across replicates of the same sample (which in this case is all of them
+awk '{for(i=2;i<=NF;i++) a[$1]+=$i} END{for(k in a) print k,a[k]}' flair.quantify.counts.tsv > flair.quantify.counts.summed.tsv
+
 
 
 # flair diffsplice - This would compare splice variants across two groups. Each group must have at least 3 replicates. 
