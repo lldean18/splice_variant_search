@@ -47,7 +47,7 @@ cd $wkdir
 #grep -i $gene_of_interest flair.quantify.counts.summed.tsv > ${gene_of_interest}.flair.quantify.counts.summed.tsv
 
 # extract the refseq accessions for the splice variants
-
+#sed 's/_[^_]*$//' ${gene_of_interest}.flair.quantify.counts.summed.tsv > ${gene_of_interest}.refseq.accessions.tsv
 
 # fetch nucleotide FASTA for one accession
 efetch -db nuccore -id NM_001271521.2 -format fasta > NM_001271521.2.fa
