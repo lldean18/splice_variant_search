@@ -26,8 +26,8 @@ gene_of_interest=KCNMA1
 cd $wkdir
 
 
-# sum across replicates of the same sample (which in this case is all of them)
-awk '{for(i=2;i<=NF;i++) a[$1]+=$i} END{for(k in a) print k,a[k]}' flair.quantify.counts.tsv > flair.quantify.counts.summed.tsv
+## sum across replicates of the same sample (which in this case is all of them)
+#awk '{for(i=2;i<=NF;i++) a[$1]+=$i} END{for(k in a) print k,a[k]}' flair.quantify.counts.tsv > flair.quantify.counts.summed.tsv
 
 # extract only the splice variants for the gene of interest
 grep -i $gene_of_interest flair.quantify.counts.summed.tsv > ${gene_of_interest}.flair.quantify.counts.summed.tsv
