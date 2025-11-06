@@ -49,8 +49,24 @@ cd $wkdir
 # extract the refseq accessions for the splice variants
 #sed 's/_[^_]*$//' ${gene_of_interest}.flair.quantify.counts.summed.tsv > ${gene_of_interest}.refseq.accessions.tsv
 
-# fetch nucleotide FASTA for one accession
-efetch -db nuccore -id NM_001271521.2 -format fasta > NM_001271521.2.fa
+## get the fasta sequeces for the splice variants
+#while read id; do
+#  efetch -db nuccore -id "$id" -format fasta
+#done < ${gene_of_interest}.refseq.accessions.tsv > ${gene_of_interest}.variant.sequences.fa
 
-# fetch GenBank flatfile (includes exon/CDS annotations & descriptive text)
-efetch -db nuccore -id NM_001271521.2 -format gb > NM_001271521.2.gb
+# extract only the header lines from the fasta
+sed -n '/^>/p' ${gene_of_interest}.variant.sequences.fa > ${gene_of_interest}.variant.names.txt
+
+
+
+
+
+
+
+
+## for individual refseq IDs not used her but keeping code
+## fetch nucleotide FASTA for one accession
+#efetch -db nuccore -id NM_001271521.2 -format fasta > NM_001271521.2.fa
+
+## fetch GenBank flatfile (includes exon/CDS annotations & descriptive text)
+#efetch -db nuccore -id NM_001271521.2 -format gb > NM_001271521.2.gb
