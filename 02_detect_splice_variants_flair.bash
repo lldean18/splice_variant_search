@@ -63,8 +63,19 @@ conda activate flair
 #	--isoforms flair.collapse.isoforms.fa \
 #	--reads_manifest $manifest
 
-# sum across replicates of the same sample (which in this case is all of them
-awk '{for(i=2;i<=NF;i++) a[$1]+=$i} END{for(k in a) print k,a[k]}' flair.quantify.counts.tsv > flair.quantify.counts.summed.tsv
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
