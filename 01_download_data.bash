@@ -18,7 +18,7 @@ srun --partition defq --cpus-per-task 1 --mem 70g --time 160:00:00 --pty bash
 
 # start the data pull command for the fastqs
 # removed the real username and IP address for security
-rsync -rvhc --progress balrogusername@balrigipaddress:/share/NFSv=4/deepseq/IntraopBackup/ds1239_SF188_DMSO_RNA ./
+rsync -rvhc --progress balrogusername@balrogipaddress:/share/NFSv=4/deepseq/IntraopBackup/ds1239_SF188_DMSO_RNA ./
 
 
 
