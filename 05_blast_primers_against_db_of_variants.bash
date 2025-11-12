@@ -19,6 +19,13 @@ cd /gpfs01/home/mbzlld/data/splice_variant_search
 # make a blast database from a fasta file of splice variants
 makeblastdb -dbtype nucl -in KCNMA1.variant.sequences.fa -parse_seqids -out KCNMA1_variant_blast_db
 
-# blast the query primer sequences against the database
-blastp -query mouse_STREX_primers.fasta -db KCNMA1_variant_blast_db -outfmt '6 sseqid' -evalue 1e-5 -out KCNMA1_variant_blast_output.txt
+# blast the query STREX primer sequences against the database
+blastn -query mouse_STREX_primers.fasta -db KCNMA1_variant_blast_db -outfmt '6 qseqid sseqid' -evalue 10000 -task blastn -out KCNMA1_variant_blast_output.txt
+
+# blast the query non-STREX primer sequences against the database
+blastn -query mouse_ZERO_primers.fasta -db KCNMA1_variant_blast_db -outfmt '6 qseqid sseqid' -evalue 10000 -task blastn -out KCNMA1_variant_ZERO_blast_output.txt
+
+
+
+
 
